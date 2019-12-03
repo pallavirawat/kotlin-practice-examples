@@ -1,3 +1,5 @@
+package others
+
 class Header
 
 fun extendHeaderAndMess(myBuilder: Header.()-> Unit){
@@ -18,7 +20,7 @@ class Config2{
     var count=0
 }
 
-operator fun Config2.invoke(i: Int): Config2{
+operator fun Config2.invoke(i: Int): Config2 {
     count+=i;
     return this
 }

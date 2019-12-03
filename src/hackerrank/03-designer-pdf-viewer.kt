@@ -1,6 +1,6 @@
-import kotlin.math.abs
+package hackerrank
 
-// Complete the designerPdfViewer function below.
+// Complete the hackerearth.designerPdfViewer function below.
 fun designerPdfViewer(h: Array<Int>, word: String): Int {
     val map = word.map {
         h[it.toInt() - 97]

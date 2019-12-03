@@ -1,3 +1,8 @@
+package others
+
+import kotlin.reflect.jvm.javaField
+import kotlin.reflect.jvm.javaGetter
+
 class Dog {
     private val noise : String = "Woof"
     fun makeNoise(){
@@ -9,6 +14,8 @@ class Dog {
     }
 }
 
+class A(val p: Int)
+
 fun main() {
     val dog = Dog()
     dog::class.java.
@@ -16,4 +23,8 @@ fun main() {
     dog.makeNoise()
 
     dog::class.java.getDeclaredMethod("makeNoiseQuietly").apply { isAccessible = true }.invoke(dog)
+
+    val javaGetter = A::p.javaGetter
+    println(javaGetter) // prints "public final int others.A.getP()"
+    println(A::p.javaField)  // prints "private final int others.A.p"
 }

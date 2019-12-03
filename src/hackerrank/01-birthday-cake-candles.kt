@@ -1,4 +1,6 @@
-// Complete the birthdayCakeCandles function below.
+package hackerrank
+
+// Complete the hackerearth.birthdayCakeCandles function below.
 fun birthdayCakeCandles(ar: Array<Int>): Int {
     val max = ar.max()
     val let = max?.let {

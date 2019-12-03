@@ -1,4 +1,4 @@
-package recursion
+package recursion_destructuring
 
 fun main() {
     val number = 3
@@ -22,5 +22,5 @@ tailrec fun tailFactorialOf(number: Int, goVal : Int = 1) : Int {
     if(number ==1){
         return goVal
     }
-    return tailFactorialOf(number -1 , goVal * number)
+    return tailFactorialOf(number - 1, goVal * number)
 }

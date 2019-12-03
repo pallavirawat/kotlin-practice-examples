@@ -1,4 +1,4 @@
-package recursion
+package recursion_destructuring
 
 fun fibonacciSum(totalNumToShow: Int, num1: Int = 1, num2: Int=1 ): Int {
     if(totalNumToShow == 0){

@@ -1,4 +1,4 @@
-
+package hackerrank
 fun gradingStudents(grades: Array<Int>): MutableList<Int> {
     val finalGrades = mutableListOf<Int>()
     grades.forEach {

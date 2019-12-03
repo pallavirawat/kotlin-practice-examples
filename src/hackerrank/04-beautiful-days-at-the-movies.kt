@@ -1,6 +1,8 @@
+package hackerrank
+
 import kotlin.math.abs
 
-// Complete the beautifulDays function below.
+// Complete the hackerearth.beautifulDays function below.
 fun beautifulDays(i: Int, j: Int, k: Int): Int {
     var count = 0;
     (i..j).toList().forEach {
@@ -13,7 +15,7 @@ fun beautifulDays(i: Int, j: Int, k: Int): Int {
 
 
 fun main(args: Array<String>) {
-    val result = beautifulDays(20,23,6)
+    val result = beautifulDays(20, 23, 6)
 
     println(result)
 }

@@ -1,8 +1,8 @@
-import kotlin.math.abs
+package hackerrank
 
-// Complete the beautifulDays function below.
+// Complete the hackerearth.beautifulDays function below.
 
-// Complete the compareTriplets function below.
+// Complete the hackerearth.compareTriplets function below.
 fun compareTriplets(a: Array<Int>, b: Array<Int>): Array<Int> {
     var ac = 0
     var bc = 0

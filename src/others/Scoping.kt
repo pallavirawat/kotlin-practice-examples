@@ -1,3 +1,5 @@
+package others
+
 data class Scoping(val v1: String, var v2: String)
 
 
@@ -69,7 +71,7 @@ fun main() {
 
     //can also be used to declare an anonymous function/ block of scoped code
     val scopingRun = run{
-        val firstName = "Andrew" // hence these variables would not be exposed to the recursion.main scope and
+        val firstName = "Andrew" // hence these variables would not be exposed to the lightning_share_recursion.recursion_destructuring.hackerearth.others.main scope and
         // has a short lived scope. Space saving???? Does that happen that gc collects it?
         val lastName = "andy"
         Scoping(firstName, lastName)

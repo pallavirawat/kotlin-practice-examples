@@ -1,6 +1,6 @@
-import kotlin.math.abs
+package hackerrank
 
-// Complete the hurdleRace function below.
+// Complete the hackerearth.hurdleRace function below.
 fun hurdleRace(k: Int, height: Array<Int>): Int {
     val max = height.max()
     if(k>=max!!){
