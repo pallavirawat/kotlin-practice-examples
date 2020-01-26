@@ -14,9 +14,9 @@ data class Address(
     var city: String? = null
 )
 
-fun person(block: (Person) -> Unit): Person {
+fun person(block: Person.() -> Unit): Person {
     val p = Person()
-    block(p)
+    p.block()
     return p
 }
 
@@ -34,8 +34,8 @@ fun main() {
 
     // person is creating a person and passing it onto the lambda
     val person = person {
-        it.name = "John"
-        it.age = 32
+        name = "John"
+        age = 32
     }
 
     println(person)
