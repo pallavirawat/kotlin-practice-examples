@@ -1,6 +1,10 @@
 package others
 
-data class Scoping(val v1: String, var v2: String)
+data class Scoping(val v1: String, var v2: String) {
+    fun abc() {
+
+    }
+}
 
 
 fun main() {
@@ -9,12 +13,12 @@ fun main() {
     //returns the result of the lambda function
     val scoping: Scoping = Scoping("pallavi", "rawat")
     val scoping2: Scoping = Scoping("munmun", "wara")
-    val valueLet = scoping.let { sobj ->
+    val valueLet = scoping.let {
         //receives a lambda
         val a = "f"
-        println("scoping print 1 $sobj")
-        println("scoping print 2 $sobj")
-        sobj.v1
+        println("scoping print 1 $it")
+        println("scoping print 2 $it")
+        it.v1
     }
 
     //Equivalent to :
@@ -81,9 +85,11 @@ fun main() {
     // context is availabe as this and return type is always this
     //read as “apply the following assignments to the object.”
     val valueApply = scoping.apply {
-        v2="let us change this now"
+        v2 = "let us change this now"
         v1 + v2 //this wont be returned
     }
+
+    scoping.apply { }
     // can be used for complex processing over an object where you want to do additional things
     // but return the object itself at the end like some configuration to be done in an object
 

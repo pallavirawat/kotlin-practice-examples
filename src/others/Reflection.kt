@@ -14,17 +14,16 @@ class Dog {
     }
 }
 
-class A(val p: Int)
+class ReflectionA(val p: Int)
 
 fun main() {
     val dog = Dog()
-    dog::class.java.
-            getDeclaredField("noise").apply { isAccessible = true }.set(dog, "Owwwwww")
+    dog::class.java.getDeclaredField("noise").apply { isAccessible = true }.set(dog, "Owwwwww")
     dog.makeNoise()
 
     dog::class.java.getDeclaredMethod("makeNoiseQuietly").apply { isAccessible = true }.invoke(dog)
 
-    val javaGetter = A::p.javaGetter
+    val javaGetter = ReflectionA::p.javaGetter
     println(javaGetter) // prints "public final int others.A.getP()"
-    println(A::p.javaField)  // prints "private final int others.A.p"
+    println(ReflectionA::p.javaField)  // prints "private final int others.A.p"
 }
