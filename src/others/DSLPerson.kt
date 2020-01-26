@@ -4,7 +4,7 @@ package others
 data class Person(
     val name: String? = null,
     val age: Int? = null,
-    val address: Address? = null
+    val address: List<Address>
 )
 
 data class Address(
@@ -32,14 +32,15 @@ class AddressBuilder {
 class PersonBuilder {
     var name = ""
     var age = -1
-    var address: Address? = null
+    val addresses: MutableList<Address> = mutableListOf()
 
 
     fun address(block: AddressBuilder.() -> Unit) {
-        address = AddressBuilder().apply(block).build()
+        val address = AddressBuilder().apply(block).build()
+        addresses.add(address)
     }
 
-    fun build(): Person = Person(name, age, address)
+    fun build(): Person = Person(name, age, addresses)
 
 }
 
@@ -62,6 +63,11 @@ fun main() {
         address {
             street = "Main Street"
             number = 42
+            city = "London"
+        }
+        address {
+            street = "some random street"
+            number = 41
             city = "London"
         }
     }
