@@ -2,11 +2,10 @@ package others
 
 
 data class Person(
-    var name: String? = null,
-    var age: Int? = null,
-    var address: Address? = null
+    val name: String? = null,
+    val age: Int? = null,
+    val address: Address? = null
 )
-
 
 data class Address(
     var street: String? = null,
@@ -14,10 +13,24 @@ data class Address(
     var city: String? = null
 )
 
-fun person(block: Person.() -> Unit): Person {
-    val p = Person()
+fun person(block: PersonBuilder.() -> Unit): Person {
+    val p = PersonBuilder()
     p.block()
-    return p
+    return p.build()
+}
+
+class PersonBuilder {
+    var name = ""
+    var age = 2
+    var address: Address? = null
+
+
+    fun address(block: Address.() -> Unit) {
+        address = Address().apply(block)
+    }
+
+    fun build(): Person = Person(name, age, address)
+
 }
 
 
@@ -44,8 +57,4 @@ fun main() {
     }
 
     println(person)
-}
-
-private fun Person.address(block: Address.() -> Unit) {
-    address = Address().apply(block)
 }
