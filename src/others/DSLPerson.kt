@@ -36,7 +36,16 @@ fun main() {
     val person = person {
         name = "John"
         age = 32
+        address {
+            street = "Main Street"
+            number = 42
+            city = "London"
+        }
     }
 
     println(person)
+}
+
+private fun Person.address(block: Address.() -> Unit) {
+    address = Address().apply(block)
 }
