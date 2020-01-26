@@ -8,9 +8,9 @@ data class Person(
 )
 
 data class Address(
-    var street: String? = null,
-    var number: Int? = null,
-    var city: String? = null
+    val street: String? = null,
+    val number: Int? = null,
+    val city: String? = null
 )
 
 fun person(block: PersonBuilder.() -> Unit): Person {
@@ -19,14 +19,24 @@ fun person(block: PersonBuilder.() -> Unit): Person {
     return p.build()
 }
 
+class AddressBuilder {
+    fun build(): Address {
+        return Address(street, number, city)
+    }
+
+    var street = ""
+    var number = -1
+    var city = ""
+}
+
 class PersonBuilder {
     var name = ""
-    var age = 2
+    var age = -1
     var address: Address? = null
 
 
-    fun address(block: Address.() -> Unit) {
-        address = Address().apply(block)
+    fun address(block: AddressBuilder.() -> Unit) {
+        address = AddressBuilder().apply(block).build()
     }
 
     fun build(): Person = Person(name, age, address)
