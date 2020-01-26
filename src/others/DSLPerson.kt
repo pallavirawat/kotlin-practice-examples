@@ -1,5 +1,7 @@
 package others
 
+@DslMarker
+annotation class PersonDsl
 
 data class Person(
     val name: String? = null,
@@ -19,6 +21,7 @@ fun person(block: PersonBuilder.() -> Unit): Person {
     return p.build()
 }
 
+@PersonDsl
 class AddressBuilder {
     fun build(): Address {
         return Address(street, number, city)
@@ -29,19 +32,19 @@ class AddressBuilder {
     var city = ""
 }
 
+@PersonDsl
 class PersonBuilder {
     var name = ""
     var age = -1
     val addresses: MutableList<Address> = mutableListOf()
 
 
-    fun address(block: AddressBuilder.() -> Unit) {
+    fun addresses(block: AddressBuilder.() -> Unit) {
         val address = AddressBuilder().apply(block).build()
         addresses.add(address)
     }
 
     fun build(): Person = Person(name, age, addresses)
-
 }
 
 
@@ -60,15 +63,11 @@ fun main() {
     val person = person {
         name = "John"
         age = 32
-        address {
+        addresses {
             street = "Main Street"
             number = 42
             city = "London"
-        }
-        address {
-            street = "some random street"
-            number = 41
-            city = "London"
+//            this@person.name="poplo" // not accessible after the dsl marker
         }
     }
 
